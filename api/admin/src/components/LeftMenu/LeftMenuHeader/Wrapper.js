@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import Logo from "../../../assets/images/logo-won.svg";
 
 const Wrapper = styled.div`
-  background-color: #007eff;
+  background-color: ${(props) => props.theme.main.colors.won.blue};
   height: ${(props) => props.theme.main.sizes.leftMenu.height};
   
   .projectName {
