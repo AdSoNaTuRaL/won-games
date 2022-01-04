@@ -1,0 +1,28 @@
+{
+  "name": "strapi-plugin-repositories",
+  "version": "0.0.0",
+  "description": "A list of my repositories in React Advanced Course.",
+  "strapi": {
+    "name": "Repositories",
+    "icon": "code",
+    "description": "A list of my repositories in React Advanced Course."
+  },
+  "dependencies": {},
+  "author": {
+    "name": "Adson Henrique",
+    "email": "adsonhenriquesilva@gmail.com",
+    "url": "https://github.com/adsonatural"
+  },
+  "maintainers": [
+    {
+      "name": "Adson Henrique",
+      "email": "adsonhenriquesilva@gmail.com",
+      "url": "https://github.com/adsonatural"
+    }
+  ],
+  "engines": {
+    "node": ">=10.16.0 <=14.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}
