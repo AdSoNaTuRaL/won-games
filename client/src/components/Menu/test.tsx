@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import { renderWithTheme } from 'utils/tests/helpers'
 
 import Menu from './index'
@@ -18,8 +18,19 @@ describe('<Menu />', () => {
 
     // select menuFull
     const fullMenuElement = screen.getByRole('navigation', { hidden: true })
+
     //verify if menu is hidden
+    expect(fullMenuElement.getAttribute('aria-hidden')).toBe('true')
+    expect(fullMenuElement).toHaveStyle({ opacity: 0 })
+
     // click on menu and check if its open
+    fireEvent.click(screen.getByLabelText(/open menu/i))
+    expect(fullMenuElement.getAttribute('aria-hidden')).toBe('false')
+    expect(fullMenuElement).toHaveStyle({ opacity: 1 })
+
     // click on menu and check if its closed
+    fireEvent.click(screen.getByLabelText(/close menu/i))
+    expect(fullMenuElement.getAttribute('aria-hidden')).toBe('true')
+    expect(fullMenuElement).toHaveStyle({ opacity: 0 })
   })
 })
