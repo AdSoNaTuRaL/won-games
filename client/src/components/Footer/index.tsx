@@ -11,7 +11,7 @@ const Footer = () => (
     <S.Content>
       <S.Column>
         <Heading color="black" size="small" lineBottom lineColor="secondary">
-          Contact
+          Contact us
         </Heading>
 
         <a href="malito:adsonhenriquesilva@gmail.com">Email-me</a>
@@ -22,7 +22,7 @@ const Footer = () => (
           Follow us
         </Heading>
 
-        <nav aria-aria-labelledby="social media">
+        <nav aria-labelledby="social media">
           <a
             href="https://www.instagram.com/adsonatural"
             target="_blank"
@@ -59,7 +59,7 @@ const Footer = () => (
           Links
         </Heading>
 
-        <nav aria-aria-labelledby="footer resources">
+        <nav aria-labelledby="footer resources">
           <Link href="/">
             <a>Home</a>
           </Link>
