@@ -18,11 +18,30 @@ describe('<Banner />', () => {
     expect(
       screen.getByRole('heading', { name: /defy death/i })
     ).toBeInTheDocument()
+
     expect(
       screen.getByRole('heading', { name: /Play the new CrashLands season/i })
     ).toBeInTheDocument()
+
     expect(screen.getByRole('img', { name: /defy death/i })).toBeInTheDocument()
 
     expect(container.firstChild).toMatchSnapshot()
+  })
+
+  it('should render a ribbon', () => {
+    renderWithTheme(
+      <Banner
+        {...props}
+        ribbon="20% OFF"
+        ribbonSize="small"
+        ribbonColor="secondary"
+      />
+    )
+
+    const ribbon = screen.getByText(/20% OFF/i)
+
+    expect(ribbon).toBeInTheDocument()
+    expect(ribbon).toHaveStyle({ backgroundColor: '#3CD3C1' })
+    expect(ribbon).toHaveStyle({ height: '2.6rem', fontSize: '1.2rem' })
   })
 })
