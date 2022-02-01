@@ -15,16 +15,17 @@ describe('<GameCard />', () => {
     renderWithTheme(<GameCard {...props} />)
 
     expect(
-      screen.getByRole('heading', { name: /population zero/i })
+      screen.getByRole('heading', { name: props.title })
     ).toBeInTheDocument()
 
     expect(
-      screen.getByRole('heading', { name: /rockstar games/i })
+      screen.getByRole('heading', { name: props.developer })
     ).toBeInTheDocument()
 
-    expect(
-      screen.getByRole('img', { name: /population zero/i })
-    ).toHaveAttribute('src', props.img)
+    expect(screen.getByRole('img', { name: props.title })).toHaveAttribute(
+      'src',
+      props.img
+    )
 
     expect(screen.getByLabelText(/add to wishlist/i)).toBeInTheDocument()
   })
