@@ -6,6 +6,6 @@
   
   
 
-  ![CI](https://github.com/AdSoNaTuRaL/won-games/actions/workflows/ci/badge.svg)
+  ![CI](https://github.com/AdSoNaTuRaL/won-games/actions/workflows/ci.yml/badge.svg)
   
 </div>
