@@ -1,7 +1,7 @@
 export default [
   {
     img: 'https://source.unsplash.com/user/willianjusten/1042x580',
-    title: 'Defy death 1',
+    title: 'Defy death',
     subtitle: '<p>Play the new <strong>CrashLands</strong> season',
     buttonLabel: 'Buy now',
     buttonLink: '/games/defy-death',
@@ -9,14 +9,14 @@ export default [
   },
   {
     img: 'https://source.unsplash.com/user/willianjusten/1042x582',
-    title: 'Defy death 2',
+    title: 'Defy death',
     subtitle: '<p>Play the new <strong>CrashLands</strong> season',
     buttonLabel: 'Buy now',
     buttonLink: '/games/defy-death'
   },
   {
     img: 'https://source.unsplash.com/user/willianjusten/1042x581',
-    title: 'Defy death 3',
+    title: 'Defy death',
     subtitle: '<p>Play the new <strong>CrashLands</strong> season',
     buttonLabel: 'Buy now',
     buttonLink: '/games/defy-death'
