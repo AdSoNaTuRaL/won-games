@@ -1,6 +1,6 @@
 name: Client CI
 on:
-  [pull_request, push]:
+  push:
     paths-ignore:
       - '**/**.md'
       - '**.md'
