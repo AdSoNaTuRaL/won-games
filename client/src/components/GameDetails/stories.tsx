@@ -8,6 +8,17 @@ export default {
     backgrounds: {
       default: 'won-dark'
     }
+  },
+  args: {
+    platforms: ['windows', 'linux', 'mac']
+  },
+  argTypes: {
+    platforms: {
+      control: {
+        type: 'inline-check',
+        options: ['windows', 'linux', 'mac']
+      }
+    }
   }
 } as Meta
 
@@ -16,7 +27,3 @@ export const Basic: Story<GameDetailsProps> = (args) => (
     <GameDetails {...args} />
   </div>
 )
-
-Basic.args = {
-  platforms: ['windows', 'linux', 'mac']
-}
