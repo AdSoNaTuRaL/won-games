@@ -21,33 +21,49 @@ const props = {
   freeHighligh: highlighMock
 }
 
+jest.mock('components/Menu', () => {
+  return {
+    __esModule: true,
+    default: function Mock() {
+      return <div data-testid="Mock menu"></div>
+    }
+  }
+})
+
+jest.mock('components/Footer', () => {
+  return {
+    __esModule: true,
+    default: function Mock() {
+      return <div data-testid="Mock footer"></div>
+    }
+  }
+})
+
+jest.mock('components/Showcase', () => {
+  return {
+    __esModule: true,
+    default: function Mock() {
+      return <div data-testid="Mock showcase"></div>
+    }
+  }
+})
+
+jest.mock('components/BannerSlider', () => {
+  return {
+    __esModule: true,
+    default: function Mock() {
+      return <div data-testid="Mock bannerSlider"></div>
+    }
+  }
+})
+
 describe('<Home />', () => {
-  it('should render menu, footer, sections and section elements', () => {
+  it('should render menu and footer', () => {
     renderWithTheme(<Home {...props} />)
 
-    // MENU
-    expect(screen.getByLabelText(/open menu/i)).toBeInTheDocument()
-
-    //FOOTER
-    expect(
-      screen.getByRole('heading', { name: /contact us/i })
-    ).toBeInTheDocument()
-
-    // SECTIONS
-    expect(screen.getByRole('heading', { name: /news/i })).toBeInTheDocument()
-    expect(
-      screen.getByRole('heading', { name: /most popular/i })
-    ).toBeInTheDocument()
-    expect(
-      screen.getByRole('heading', { name: /upcoming/i })
-    ).toBeInTheDocument()
-    expect(
-      screen.getByRole('heading', { name: /free games/i })
-    ).toBeInTheDocument()
-
-    // SECTION ELEMENTS
-    expect(screen.getAllByText(/defy death/i)).toHaveLength(3)
-    expect(screen.getAllByText(/population zero/i)).toHaveLength(5)
-    expect(screen.getAllByText(/red dead is back/i)).toHaveLength(3)
+    expect(screen.getByTestId('Mock menu')).toBeInTheDocument()
+    expect(screen.getByTestId('Mock footer')).toBeInTheDocument()
+    expect(screen.getAllByTestId('Mock showcase')).toHaveLength(5)
+    expect(screen.getByTestId('Mock bannerSlider')).toBeInTheDocument()
   })
 })
