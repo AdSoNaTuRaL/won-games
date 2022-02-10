@@ -3,7 +3,11 @@ import * as S from './styles'
 
 const Game = () => (
   <Base>
-    <h1>Game</h1>
+    <S.Cover
+      src="https://pbs.twimg.com/profile_banners/2349217338/1642504838/1500x500"
+      role="image"
+      aria-label="cover"
+    />
   </Base>
 )
 
