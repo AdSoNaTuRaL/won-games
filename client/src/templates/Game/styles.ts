@@ -53,3 +53,13 @@ export const SectionGallery = styled(Section)`
     display: block;
   `}
 `
+
+export const SectionDescription = styled(Section)`
+  ${({ theme }) => css`
+    .description__copyrights {
+      font-size: ${theme.font.sizes.xsmall};
+      margin-top: ${theme.spacings.medium};
+      color: ${theme.colors.gray};
+    }
+  `}
+`
