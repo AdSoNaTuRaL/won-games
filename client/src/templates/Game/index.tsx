@@ -1,13 +1,13 @@
 import Base from 'templates/Base'
 import * as S from './styles'
 
-const Game = () => (
+export type GameTemplateProps = {
+  cover: string
+}
+
+const Game = ({ cover }: GameTemplateProps) => (
   <Base>
-    <S.Cover
-      src="https://pbs.twimg.com/profile_banners/2349217338/1642504838/1500x500"
-      role="image"
-      aria-label="cover"
-    />
+    <S.Cover src={cover} role="image" aria-label="cover" />
   </Base>
 )
 
