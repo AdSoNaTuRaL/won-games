@@ -1,7 +1,8 @@
+import { useState } from 'react'
+import { Settings } from 'react-slick'
+
 import { ArrowBackIos as ArrowLeft } from '@styled-icons/material-outlined/ArrowBackIos'
 import { ArrowForwardIos as ArrowRight } from '@styled-icons/material-outlined/ArrowForwardIos'
-
-import { Settings } from 'react-slick'
 
 import Slider from 'components/Slider'
 
@@ -51,19 +52,32 @@ export type GalleryProps = {
   items: GalleryImageProps[]
 }
 
-const Gallery = ({ items }: GalleryProps) => (
-  <S.Wrapper>
-    <Slider settings={settings}>
-      {items.map((item, index) => (
-        <img
-          role="button"
-          key={index}
-          src={item.src}
-          alt={`Thumb - ${item.alt}`}
-        />
-      ))}
-    </Slider>
-  </S.Wrapper>
-)
+const Gallery = ({ items }: GalleryProps) => {
+  const [isOpen, setIsOpen] = useState(false)
+
+  return (
+    <S.Wrapper>
+      <Slider settings={settings}>
+        {items.map((item, index) => (
+          <img
+            role="button"
+            key={index}
+            src={item.src}
+            alt={`Thumb - ${item.alt}`}
+            onClick={() => {
+              setIsOpen(true)
+            }}
+          />
+        ))}
+      </Slider>
+
+      <S.Modal
+        isOpen={isOpen}
+        aria-label="modal"
+        aria-hidden={!isOpen}
+      ></S.Modal>
+    </S.Wrapper>
+  )
+}
 
 export default Gallery
