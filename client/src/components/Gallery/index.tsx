@@ -7,6 +7,7 @@ import { ArrowForwardIos as ArrowRight } from '@styled-icons/material-outlined/A
 import Slider from 'components/Slider'
 
 import * as S from './styles'
+import { Close } from 'styled-icons/material-outlined'
 
 const settings: Settings = {
   arrows: true,
@@ -64,18 +65,20 @@ const Gallery = ({ items }: GalleryProps) => {
             key={index}
             src={item.src}
             alt={`Thumb - ${item.alt}`}
-            onClick={() => {
-              setIsOpen(true)
-            }}
+            onClick={() => setIsOpen(true)}
           />
         ))}
       </Slider>
 
-      <S.Modal
-        isOpen={isOpen}
-        aria-label="modal"
-        aria-hidden={!isOpen}
-      ></S.Modal>
+      <S.Modal isOpen={isOpen} aria-label="modal" aria-hidden={!isOpen}>
+        <S.Close
+          role="button"
+          aria-label="close modal"
+          onClick={() => setIsOpen(false)}
+        >
+          <Close size={40} />
+        </S.Close>
+      </S.Modal>
     </S.Wrapper>
   )
 }
