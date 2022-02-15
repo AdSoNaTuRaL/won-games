@@ -75,3 +75,37 @@ export const Price = styled.p`
     font-weight: ${theme.font.bold};
   `}
 `
+
+export const PaymentContent = styled.div`
+  ${({ theme }) => css`
+    color: ${theme.colors.gray};
+    font-size: ${theme.font.sizes.small};
+    display: flex;
+    flex-direction: column;
+    min-width: 28rem;
+    margin-top: ${theme.spacings.xsmall};
+
+    ${media.greaterThan('medium')`
+      margin-top: 0;
+      flex: 1;
+      flex-direction: column-reverse;
+      justify-content: space-between;
+      align-items: flex-end;
+    `}
+  `}
+`
+
+export const CardInfo = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    align-items: center;
+
+    img {
+      margin-left: ${theme.spacings.xxsmall};
+    }
+
+    ${media.greaterThan('medium')`
+      margin-top: ${theme.spacings.xsmall};
+    `}
+  `}
+`
