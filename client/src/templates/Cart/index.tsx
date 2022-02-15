@@ -8,6 +8,7 @@ import Showcase from 'components/Showcase'
 import Base from 'templates/Base'
 import * as S from './styles'
 import PaymentOptions, { PaymentOptionsProps } from 'components/PaymentOptions'
+import Empty from 'components/Empty'
 
 export type CartProps = {
   recommendedGames: GameCardProps[]
@@ -31,11 +32,20 @@ const Cart = ({
           My cart
         </Heading>
 
-        <S.Content>
-          <CartList items={items} total={total} />
+        {items.length ? (
+          <S.Content>
+            <CartList items={items} total={total} />
 
-          <PaymentOptions handlePayment={handlePayment} cards={cards} />
-        </S.Content>
+            <PaymentOptions handlePayment={handlePayment} cards={cards} />
+          </S.Content>
+        ) : (
+          <Empty
+            title="Your cart is empty"
+            description="Go back to store and explore great games and offers"
+            hasLink
+          />
+        )}
+
         <Divider />
       </Container>
 
