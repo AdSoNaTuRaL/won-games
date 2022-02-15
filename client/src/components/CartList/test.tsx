@@ -11,9 +11,11 @@ const props = {
 
 describe('<CartList />', () => {
   it('should render the cart list', () => {
-    renderWithTheme(<CartList {...props} />)
+    const { container } = renderWithTheme(<CartList {...props} />)
 
     expect(screen.getAllByRole('heading')).toHaveLength(2)
     expect(screen.getByText(props.total)).toBeInTheDocument()
+
+    expect(container.parentElement).toMatchSnapshot()
   })
 })
