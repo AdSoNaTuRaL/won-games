@@ -58,6 +58,13 @@ export const Title = styled.h3`
   `}
 `
 
+export const DownloadLink = styled.a`
+  ${({ theme }) => css`
+    color: ${theme.colors.primary};
+    margin-left: ${theme.spacings.xxsmall};
+  `}
+`
+
 export const Price = styled.p`
   ${({ theme }) => css`
     color: ${theme.colors.white};

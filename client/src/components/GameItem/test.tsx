@@ -24,4 +24,14 @@ describe('<GameItem />', () => {
       props.img
     )
   })
+
+  it('should render the item with download link', () => {
+    const downloadLink = 'https://link.com'
+
+    renderWithTheme(<GameItem {...props} downloadLink={downloadLink} />)
+
+    expect(
+      screen.getByRole('link', { name: `Get ${props.title} here` })
+    ).toHaveAttribute('href', downloadLink)
+  })
 })
