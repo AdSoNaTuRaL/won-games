@@ -6,4 +6,8 @@ export default {
   component: FormProfile
 } as Meta
 
-export const Basic: Story = (args) => <FormProfile {...args} />
+export const Basic: Story = (args) => (
+  <div style={{ maxWidth: 860, margin: 'auto' }}>
+    <FormProfile {...args} />
+  </div>
+)
