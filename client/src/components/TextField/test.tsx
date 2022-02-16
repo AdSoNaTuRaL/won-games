@@ -7,7 +7,7 @@ import TextField from './index'
 
 describe('<TextField />', () => {
   it('should render with label', () => {
-    renderWithTheme(<TextField label="label" labelFor="field" id="field" />)
+    renderWithTheme(<TextField label="label" name="field" id="field" />)
 
     expect(screen.getByLabelText('label')).toBeInTheDocument()
   })
@@ -30,9 +30,8 @@ describe('<TextField />', () => {
       <TextField
         onInput={onInput}
         label="label"
-        labelFor="label"
+        name="label"
         placeholder="teste"
-        id="field"
       />
     )
 
@@ -51,9 +50,7 @@ describe('<TextField />', () => {
   })
 
   it('should be accessible by pressing key Tab', () => {
-    renderWithTheme(
-      <TextField label="TextField" labelFor="TextField" id="TextField" />
-    )
+    renderWithTheme(<TextField label="TextField" name="TextField" />)
 
     const input = screen.getByLabelText('TextField')
     expect(document.body).toHaveFocus()
@@ -88,8 +85,7 @@ describe('<TextField />', () => {
       <TextField
         onInput={onInput}
         label="textField"
-        labelFor="textField"
-        id="textField"
+        name="textField"
         disabled
       />
     )
@@ -107,14 +103,7 @@ describe('<TextField />', () => {
   })
 
   it('should not be accessible by key Tab when is disabled', async () => {
-    renderWithTheme(
-      <TextField
-        label="textField"
-        labelFor="textField"
-        id="textField"
-        disabled
-      />
-    )
+    renderWithTheme(<TextField label="textField" name="textField" disabled />)
 
     const input = screen.getByLabelText('textField')
     expect(document.body).toHaveFocus()
@@ -129,8 +118,7 @@ describe('<TextField />', () => {
       <TextField
         icon={<Email data-testid="icon" />}
         label="textField"
-        labelFor="textField"
-        id="textField"
+        name="textField"
         error="Error message"
       />
     )
