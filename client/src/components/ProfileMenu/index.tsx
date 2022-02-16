@@ -8,7 +8,7 @@ import {
 import * as S from './styles'
 
 export type ProfileMenuProps = {
-  activeLink?: '/profile/me' | '/profile/cards' | 'profile/orders'
+  activeLink?: '/profile/me' | '/profile/cards' | '/profile/orders' | string
 }
 
 const ProfileMenu = ({ activeLink }: ProfileMenuProps) => (
@@ -28,7 +28,7 @@ const ProfileMenu = ({ activeLink }: ProfileMenuProps) => (
     </Link>
 
     <Link href="/profile/orders" passHref>
-      <S.Link isActive={activeLink === 'profile/orders'} title="My orders">
+      <S.Link isActive={activeLink === '/profile/orders'} title="My orders">
         <FormatListBulleted size={24} />
         <span>My orders</span>
       </S.Link>
