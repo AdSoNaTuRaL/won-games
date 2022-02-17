@@ -32,7 +32,7 @@ export default [
   },
   {
     title: 'Sort by',
-    name: 'sorty_by',
+    name: 'sort_by',
     type: 'radio',
     fields: [
       {
