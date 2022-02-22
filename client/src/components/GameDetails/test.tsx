@@ -8,7 +8,7 @@ const props: GameDetailsProps = {
   publisher: 'CD PROJECT RED',
   platforms: ['windows', 'mac', 'linux'],
   releaseDate: '2020-11-21T23:00:00',
-  rating: 'BR0',
+  rating: 'FREE',
   genres: ['Role-playing', 'Narrative']
 }
 
@@ -69,8 +69,8 @@ describe('<GameDetails />', () => {
     expect(screen.getByText(/Different Tales/i)).toBeInTheDocument()
   })
 
-  it('should render 18+ rating when BR18', () => {
-    renderWithTheme(<GameDetails {...props} rating="BR18" />)
+  it('should render 18+ rating when pegi18', () => {
+    renderWithTheme(<GameDetails {...props} rating="pegi18" />)
 
     expect(screen.getByText(/18\+/)).toBeInTheDocument()
   })
