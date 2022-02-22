@@ -1,14 +1,7 @@
-
-
 <div align="center">
-  
-  ![React Advanced](https://raw.githubusercontent.com/AdSoNaTuRaL/boilerplate-nextjs/main/public/img/icon-192.png)
-  
-  This is a [Next.js](https://nextjs.org/) boilerplate.
 
+  ![Won Games](https://user-images.githubusercontent.com/26275918/152402077-22e5cc23-f615-423b-9297-6d401bb3d585.png)
 
-  ![ci](https://github.com/AdSoNaTuRaL/boilerplate-nextjs/workflows/ci/badge.svg)
-  
 </div>
 
 ## What is inside?
