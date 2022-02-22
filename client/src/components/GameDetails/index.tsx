@@ -6,7 +6,7 @@ import * as S from './styles'
 
 type Platform = 'windows' | 'linux' | 'mac'
 
-type Rating = 'BR0' | 'BR10' | 'BR12' | 'BR14' | 'BR16' | 'BR18'
+type Rating = 'FREE' | 'pegi3' | 'pegi7' | 'pegi12' | 'pegi16' | 'pegi18'
 
 export type GameDetailsProps = {
   developer: string
@@ -73,7 +73,7 @@ const GameDetails = ({
         <S.Block>
           <S.Label>Rating</S.Label>
           <S.Description>
-            {rating === 'BR0' ? 'FREE' : `${rating.replace('BR', '')}+`}
+            {rating === 'FREE' ? 'FREE' : `${rating.replace('pegi', '')}+`}
           </S.Description>
         </S.Block>
 

@@ -1,6 +1,8 @@
 name: Client CI
 on:
   push:
+    branches:
+      - main
     paths-ignore:
       - '**/**.md'
       - '**.md'
