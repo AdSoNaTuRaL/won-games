@@ -17,7 +17,7 @@ export type WishlistTemplateProps = {
 
 const Wishlist = ({
   games,
-  recommendedTitle = 'You may like these games',
+  recommendedTitle,
   recommendedGames,
   recommendedHighlight
 }: WishlistTemplateProps) => (
