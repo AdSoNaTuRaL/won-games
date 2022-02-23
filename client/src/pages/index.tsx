@@ -1,6 +1,5 @@
 import Home, { HomeTemplateProps } from 'templates/Home'
 
-import gamesMock from 'components/GameCardSlider/mock'
 import highlighMock from 'components/Highlight/mock'
 
 import { initializeApollo } from 'utils/apollo'
@@ -31,6 +30,7 @@ export async function getStaticProps() {
         ribbonColor: banner.ribbon?.color || null,
         ribbonSize: banner.ribbon?.size || null
       })),
+      newGamesTitle: sections?.newGames?.title,
       newGames: newGames.map((game) => ({
         slug: game.slug,
         title: game.name,
@@ -38,6 +38,7 @@ export async function getStaticProps() {
         img: `http://localhost:1337${game.cover?.url}`,
         price: game.price
       })),
+      mostPopularGamesTitle: sections?.popularGames?.title,
       mostPopularHighlight: highlighMock,
       mostPopularGames: sections!.popularGames!.games.map((game) => ({
         slug: game.slug,
@@ -46,6 +47,7 @@ export async function getStaticProps() {
         img: `http://localhost:1337${game.cover?.url}`,
         price: game.price
       })),
+      upcomingGamesTitle: sections?.upcomingGames?.title,
       upcomingGames: upcomingGames.map((game) => ({
         slug: game.slug,
         title: game.name,
@@ -54,7 +56,8 @@ export async function getStaticProps() {
         price: game.price
       })),
       upcomingHighlight: highlighMock,
-      freGames: freeGames.map((game) => ({
+      freeGamesTitle: sections?.freeGames?.title,
+      freeGames: freeGames.map((game) => ({
         slug: game.slug,
         title: game.name,
         developer: game.developers[0].name,
