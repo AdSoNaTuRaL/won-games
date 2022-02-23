@@ -9,7 +9,8 @@ module.exports = {
     '!src/styles/**/*.ts',
     '!src/types/**/*.ts',
     '!src/components/**/mock.ts',
-    '!src/utils/apollo.ts'
+    '!src/utils/apollo.ts',
+    '!src/utils/mappers.ts'
   ],
   setupFilesAfterEnv: ['<rootDir>/.jest/setup.ts'],
   moduleDirectories: ['node_modules', 'src'],
