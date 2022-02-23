@@ -20,7 +20,7 @@ export async function getStaticProps() {
   return {
     props: {
       games: gamesMock,
-      title: data.recommended?.section?.title,
+      recommendedTitle: data.recommended?.section?.title,
       recommendedGames: gamesMapper(data.recommended?.section?.games),
       recommendedHighlight: highlightMapper(
         data.recommended?.section?.highlight
