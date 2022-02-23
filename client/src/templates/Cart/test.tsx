@@ -11,6 +11,7 @@ import Cart from './index'
 import React from 'react'
 
 const props = {
+  recommendedTitle: 'You may like these games',
   items: itemsMock,
   total: 'R$ 430, 00',
   cards: cardsMock,

@@ -1,18 +1,24 @@
-import { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
+import { GetStaticProps } from 'next'
+
 import { initializeApollo } from 'utils/apollo'
-
-import Game, { GameTemplateProps } from 'templates/Game'
-
-import gamesMock from 'components/GameCardSlider/mock'
-import highlightMock from 'components/Highlight/mock'
+import { gamesMapper, highlightMapper } from 'utils/mappers'
 
 import { QueryGames, QueryGamesVariables } from 'graphql/generated/QueryGames'
 import { QUERY_GAMES, QUERY_GAME_BY_SLUG } from 'graphql/queries/games'
+import { queryRecommended } from 'graphql/generated/queryRecommended'
+import { QUERY_RECOMMENDED } from 'graphql/queries/recommended'
+import { QUERY_UPCOMING } from 'graphql/queries/upcoming'
+import {
+  QueryUpcoming,
+  QueryUpcomingVariables
+} from 'graphql/generated/QueryUpcoming'
 import {
   QueryGameBySlug,
   QueryGameBySlugVariables
 } from 'graphql/generated/QueryGameBySlug'
+
+import Game, { GameTemplateProps } from 'templates/Game'
 
 const apolloClient = initializeApollo()
 
@@ -38,6 +44,7 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+  // GET GAME DATA
   const { data } = await apolloClient.query<
     QueryGameBySlug,
     QueryGameBySlugVariables
@@ -48,6 +55,21 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 
   const game = data.games[0]
+
+  // GET RECOMMENDED GAMES
+  const { data: recommended } = await apolloClient.query<queryRecommended>({
+    query: QUERY_RECOMMENDED
+  })
+
+  // GET UPCOMING GAMES AND HIGHLIGHT
+  const TODAY = new Date().toISOString().slice(0, 10)
+  const { data: upcoming } = await apolloClient.query<
+    QueryUpcoming,
+    QueryUpcomingVariables
+  >({
+    query: QUERY_UPCOMING,
+    variables: { date: TODAY }
+  })
 
   return {
     props: {
@@ -71,9 +93,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         rating: game.rating,
         genres: game.categories.map((category) => category.name)
       },
-      upcomingGames: gamesMock,
-      upcomingHighlight: highlightMock,
-      recommendedGames: gamesMock
+      upcomingTitle: upcoming.showcase?.upcomingGames?.title,
+      upcomingGames: gamesMapper(upcoming.upcomingGames),
+      upcomingHighlight: highlightMapper(
+        upcoming.showcase?.upcomingGames?.highlight
+      ),
+      recommendedTitle: recommended.recommended?.section?.title,
+      recommendedGames: gamesMapper(recommended.recommended?.section?.games)
     }
   }
 }
