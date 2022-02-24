@@ -8,7 +8,20 @@ export const Main = styled(Container)`
       display: grid;
       grid-template-columns: 26rem 1fr;
       gap: ${theme.grid.gutter};
+
+      > svg {
+        color: ${theme.colors.white};
+        justify-self: center;
+        align-self: baseline;
+      }
     `}
+
+    > svg {
+      color: ${theme.colors.white};
+      display: flex;
+      margin: auto;
+      margin-top: ${theme.spacings.xxlarge};
+    }
   `}
 `
 
