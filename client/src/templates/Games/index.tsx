@@ -13,6 +13,7 @@ import { useQueryGames } from 'graphql/queries/games'
 
 import * as S from './styles'
 import { parseQueryStringToFilter, parseQueryStringToWhere } from 'utils/filter'
+import Empty from 'components/Empty'
 
 export type GamesTemplateProps = {
   filterItems: ItemProps[]
@@ -61,23 +62,33 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
           <Spinner size={50} title="Loading..." />
         ) : (
           <section>
-            <Grid>
-              {data?.games.map((game) => (
-                <GameCard
-                  key={game.slug}
-                  title={game.name}
-                  slug={game.slug}
-                  developer={game.developers[0].name}
-                  img={`http://localhost:1337${game.cover?.url}`}
-                  price={game.price}
-                />
-              ))}
-            </Grid>
+            {data?.games.length ? (
+              <>
+                <Grid>
+                  {data?.games.map((game) => (
+                    <GameCard
+                      key={game.slug}
+                      title={game.name}
+                      slug={game.slug}
+                      developer={game.developers[0].name}
+                      img={`http://localhost:1337${game.cover?.url}`}
+                      price={game.price}
+                    />
+                  ))}
+                </Grid>
 
-            <S.ShowMore role="button" onClick={handleShowMore}>
-              <p>Show more</p>
-              <KeyboardArrowDown size={35} />
-            </S.ShowMore>
+                <S.ShowMore role="button" onClick={handleShowMore}>
+                  <p>Show more</p>
+                  <KeyboardArrowDown size={35} />
+                </S.ShowMore>
+              </>
+            ) : (
+              <Empty
+                title=":("
+                description="We didn't find any game with this filter"
+                hasLink
+              />
+            )}
           </section>
         )}
       </S.Main>
