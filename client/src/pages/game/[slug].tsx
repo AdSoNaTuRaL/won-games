@@ -48,7 +48,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { data } = await apolloClient.query<
     QueryGameBySlug,
     QueryGameBySlugVariables
-  >({ query: QUERY_GAME_BY_SLUG, variables: { slug: `${params?.slug}` } })
+  >({
+    query: QUERY_GAME_BY_SLUG,
+    variables: { slug: `${params?.slug}` },
+    fetchPolicy: 'no-cache'
+  })
 
   if (!data.games.length) {
     return { notFound: true }
@@ -72,8 +76,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   })
 
   return {
+    revalidate: 60,
     props: {
-      revalidate: 60,
       cover: `http://localhost:1337${game.cover?.src}`,
       gameInfo: {
         title: game.name,
