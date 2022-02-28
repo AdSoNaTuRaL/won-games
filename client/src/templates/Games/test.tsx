@@ -37,7 +37,7 @@ jest.mock('next/link', () => ({
 }))
 
 describe('<Games />', () => {
-  it('should render the heading', async () => {
+  it('should render sections', async () => {
     renderWithTheme(
       <MockedProvider mocks={[gamesMock]}>
         <Games filterItems={filterItemsMock} />
