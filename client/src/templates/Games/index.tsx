@@ -85,7 +85,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
             ) : (
               <Empty
                 title=":("
-                description="We didn't find any game with this filter"
+                description="We didn't find any games with this filter"
                 hasLink
               />
             )}
