@@ -7,7 +7,7 @@ import filterItemsMock from 'components/ExploreSidebar/mock'
 import { MockedProvider } from '@apollo/client/testing'
 import apolloCache from 'utils/apollo-cache'
 
-import { fetchMoreMock, gamesMock } from './mocks'
+import { fetchMoreMock, gamesMock, noGamesMock } from './mocks'
 
 import Games from './index'
 
@@ -56,7 +56,7 @@ describe('<Games />', () => {
 
   it('should render empty state when no games is found', async () => {
     renderWithTheme(
-      <MockedProvider mocks={[]}>
+      <MockedProvider mocks={[noGamesMock]}>
         <Games filterItems={filterItemsMock} />
       </MockedProvider>
     )
