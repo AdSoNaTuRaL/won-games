@@ -8,24 +8,18 @@ export const Main = styled(Container)`
       display: grid;
       grid-template-columns: 26rem 1fr;
       gap: ${theme.grid.gutter};
-
-      > svg {
-        color: ${theme.colors.white};
-        justify-self: center;
-        align-self: baseline;
-      }
     `}
-
-    > svg {
-      color: ${theme.colors.white};
-      display: flex;
-      margin: auto;
-      margin-top: ${theme.spacings.xxlarge};
-    }
   `}
 `
 
 export const ShowMore = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10rem;
+`
+
+export const ShowMoreButton = styled.div`
   ${({ theme }) => css`
     color: ${theme.colors.white};
     text-align: center;
@@ -38,4 +32,8 @@ export const ShowMore = styled.div`
       color: ${theme.colors.primary};
     }
   `}
+`
+
+export const ShowMoreLoading = styled.img`
+  width: 4rem;
 `
