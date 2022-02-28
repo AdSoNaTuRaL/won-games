@@ -37,25 +37,12 @@ jest.mock('next/link', () => ({
 }))
 
 describe('<Games />', () => {
-  it('should render loading when starting the template', () => {
-    renderWithTheme(
-      <MockedProvider mocks={[]} addTypename={false}>
-        <Games filterItems={filterItemsMock} />
-      </MockedProvider>
-    )
-
-    expect(screen.getByRole('img', { name: /loading.../i })).toBeInTheDocument()
-  })
-
   it('should render the heading', async () => {
     renderWithTheme(
       <MockedProvider mocks={[gamesMock]}>
         <Games filterItems={filterItemsMock} />
       </MockedProvider>
     )
-
-    // starts with loading (without data)
-    expect(screen.getByRole('img', { name: /loading.../i })).toBeInTheDocument()
 
     // wait to have data and then get elements - find => asyncron proccess
     expect(await screen.findByText(/price/i)).toBeInTheDocument()

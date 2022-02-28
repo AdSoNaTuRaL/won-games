@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router'
 import { KeyboardArrowDown } from 'styled-icons/material-outlined'
-import { Spinner } from 'styled-icons/evil'
 import { ParsedUrlQueryInput } from 'querystring'
 
 import ExploreSidebar, { ItemProps } from 'components/ExploreSidebar'
@@ -23,6 +22,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
   const { push, query } = useRouter()
 
   const { data, loading, fetchMore } = useQueryGames({
+    notifyOnNetworkStatusChange: true,
     variables: {
       limit: 15,
       where: parseQueryStringToWhere({
@@ -58,39 +58,44 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
           onFilter={handleFilter}
         />
 
-        {loading ? (
-          <Spinner size={50} title="Loading..." />
-        ) : (
-          <section>
-            {data?.games.length ? (
-              <>
-                <Grid>
-                  {data?.games.map((game) => (
-                    <GameCard
-                      key={game.slug}
-                      title={game.name}
-                      slug={game.slug}
-                      developer={game.developers[0].name}
-                      img={`http://localhost:1337${game.cover?.url}`}
-                      price={game.price}
-                    />
-                  ))}
-                </Grid>
+        <section>
+          {data?.games.length ? (
+            <>
+              <Grid>
+                {data?.games.map((game) => (
+                  <GameCard
+                    key={game.slug}
+                    title={game.name}
+                    slug={game.slug}
+                    developer={game.developers[0].name}
+                    img={`http://localhost:1337${game.cover?.url}`}
+                    price={game.price}
+                  />
+                ))}
+              </Grid>
 
-                <S.ShowMore role="button" onClick={handleShowMore}>
-                  <p>Show more</p>
-                  <KeyboardArrowDown size={35} />
-                </S.ShowMore>
-              </>
-            ) : (
-              <Empty
-                title=":("
-                description="We didn't find any games with this filter"
-                hasLink
-              />
-            )}
-          </section>
-        )}
+              <S.ShowMore>
+                {loading ? (
+                  <S.ShowMoreLoading
+                    src="/img/dots.svg"
+                    alt="Loading more games"
+                  />
+                ) : (
+                  <S.ShowMoreButton role="button" onClick={handleShowMore}>
+                    <p>Show more</p>
+                    <KeyboardArrowDown size={35} />
+                  </S.ShowMoreButton>
+                )}
+              </S.ShowMore>
+            </>
+          ) : (
+            <Empty
+              title=":("
+              description="We didn't find any games with this filter"
+              hasLink
+            />
+          )}
+        </section>
       </S.Main>
     </Base>
   )
