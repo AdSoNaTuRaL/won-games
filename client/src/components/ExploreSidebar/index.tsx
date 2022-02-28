@@ -1,5 +1,5 @@
 import xor from 'lodash.xor'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ParsedUrlQueryInput } from 'querystring'
 import { Close, FilterList } from 'styled-icons/material-outlined'
 
@@ -38,9 +38,13 @@ const ExploreSidebar = ({
   const [values, setValues] = useState(initialValues)
   const [isOpen, setIsOpen] = useState(false)
 
-  const handleFilter = () => {
-    setIsOpen(false)
+  useEffect(() => {
     onFilter(values)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [values])
+
+  const handleFilterMenu = () => {
+    setIsOpen(false)
   }
 
   const handleRadio = (name: string, value: string | boolean) => {
@@ -101,7 +105,7 @@ const ExploreSidebar = ({
       </S.Content>
 
       <S.Footer>
-        <Button fullWidth size="medium" onClick={handleFilter}>
+        <Button fullWidth size="medium" onClick={handleFilterMenu}>
           Filter
         </Button>
       </S.Footer>
