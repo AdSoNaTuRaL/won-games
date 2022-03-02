@@ -1,44 +1,60 @@
+import { useCart } from 'hooks/use-cart'
+import Link from 'next/link'
+
 import Button from 'components/Button'
 import Empty from 'components/Empty'
-import GameItem, { GameItemProps } from 'components/GameItem'
-import Link from 'next/link'
+import GameItem from 'components/GameItem'
+import Loader from 'components/Loader'
+
 import * as S from './styles'
 
 export type CartListProps = {
-  items?: GameItemProps[]
-  total?: string
   hasButton?: boolean
 }
 
-const CartList = ({ items = [], total, hasButton = false }: CartListProps) => (
-  <S.Wrapper isEmpty={!items.length}>
-    {items.length ? (
-      <>
-        {items.map((item) => (
-          <GameItem key={item.title} {...item} />
-        ))}
+const CartList = ({ hasButton = false }: CartListProps) => {
+  const { items, total, loading } = useCart()
 
-        <S.Footer>
-          {!hasButton && <span>Total:</span>}
-          <S.Total>{total}</S.Total>
+  if (loading) {
+    return (
+      <S.Loading>
+        <Loader />
+      </S.Loading>
+    )
+  }
 
-          {hasButton && (
-            <Link href="/cart">
-              <Button as="a">Buy it now</Button>
-            </Link>
-          )}
-        </S.Footer>
-      </>
-    ) : (
-      <>
-        <Empty
-          title="Your cart is empty"
-          description="Go back to store and explore great games and offers"
-          hasLink
-        />
-      </>
-    )}
-  </S.Wrapper>
-)
+  return (
+    <S.Wrapper isEmpty={!items.length}>
+      {items.length ? (
+        <>
+          <S.GamesList>
+            {items.map((item) => (
+              <GameItem key={item.title} {...item} />
+            ))}
+          </S.GamesList>
+
+          <S.Footer>
+            {!hasButton && <span>Total:</span>}
+            <S.Total>{total}</S.Total>
+
+            {hasButton && (
+              <Link href="/cart">
+                <Button as="a">Buy it now</Button>
+              </Link>
+            )}
+          </S.Footer>
+        </>
+      ) : (
+        <>
+          <Empty
+            title="Your cart is empty"
+            description="Go back to store and explore great games and offers"
+            hasLink
+          />
+        </>
+      )}
+    </S.Wrapper>
+  )
+}
 
 export default CartList
