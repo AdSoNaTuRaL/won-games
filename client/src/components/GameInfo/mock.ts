@@ -1,4 +1,5 @@
 export default {
+  id: '1',
   title: 'GTA San Andreas',
   price: 215,
   description:
