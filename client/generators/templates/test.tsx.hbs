@@ -1,10 +1,9 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests/helpers'
+import { screen, render } from 'utils/test-utils'
 
 import {{pascalCase name}} from './index'
 
 describe('<{{pascalCase name}} />', () => {
   it('should render the heading', () => {
-    renderWithTheme(<{{pascalCase name}} />)
+    render(<{{pascalCase name}} />)
   })
 })

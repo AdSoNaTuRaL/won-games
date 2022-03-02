@@ -1,11 +1,11 @@
 import theme from 'styles/theme'
-import { renderWithTheme } from 'utils/tests/helpers'
+import { render } from 'utils/test-utils'
 
 import { Container } from './index'
 
 describe('<Container />', () => {
   it('should render the container', () => {
-    const { container } = renderWithTheme(
+    const { container } = render(
       <Container>
         <span>Adson Henrique</span>
       </Container>

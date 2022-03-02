@@ -1,5 +1,5 @@
 import { MockedProvider } from '@apollo/client/testing'
-import { act } from '@testing-library/react'
+import { act } from 'utils/test-utils'
 import { renderHook } from '@testing-library/react-hooks'
 import { setStorageItem } from 'utils/localStorage'
 

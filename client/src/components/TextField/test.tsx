@@ -1,32 +1,31 @@
-import { screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { renderWithTheme } from 'utils/tests/helpers'
+import { screen, waitFor, render } from 'utils/test-utils'
 import { Email } from '@styled-icons/material-outlined/Email'
 
 import TextField from './index'
 
 describe('<TextField />', () => {
   it('should render with label', () => {
-    renderWithTheme(<TextField label="label" name="field" id="field" />)
+    render(<TextField label="label" name="field" id="field" />)
 
     expect(screen.getByLabelText('label')).toBeInTheDocument()
   })
 
   it('should render without label', () => {
-    renderWithTheme(<TextField id="field" />)
+    render(<TextField id="field" />)
 
     expect(screen.queryByLabelText('label')).not.toBeInTheDocument()
   })
 
   it('should render with placeholders', () => {
-    renderWithTheme(<TextField placeholder="teste" id="field" />)
+    render(<TextField placeholder="teste" id="field" />)
 
     expect(screen.getByPlaceholderText('teste')).toBeInTheDocument()
   })
 
   it('should changes its value when typing', async () => {
     const onInput = jest.fn()
-    renderWithTheme(
+    render(
       <TextField
         onInput={onInput}
         label="label"
@@ -50,7 +49,7 @@ describe('<TextField />', () => {
   })
 
   it('should be accessible by pressing key Tab', () => {
-    renderWithTheme(<TextField label="TextField" name="TextField" />)
+    render(<TextField label="TextField" name="TextField" />)
 
     const input = screen.getByLabelText('TextField')
     expect(document.body).toHaveFocus()
@@ -60,19 +59,19 @@ describe('<TextField />', () => {
   })
 
   it('should render with icon', () => {
-    renderWithTheme(<TextField icon={<Email data-testid="icon" />} />)
+    render(<TextField icon={<Email data-testid="icon" />} />)
 
     expect(screen.getByTestId('icon')).toBeInTheDocument()
   })
 
   it('should render a icon on left by default', () => {
-    renderWithTheme(<TextField icon={<Email data-testid="icon" />} />)
+    render(<TextField icon={<Email data-testid="icon" />} />)
 
     expect(screen.getByTestId('icon').parentElement).toHaveStyle({ order: 0 })
   })
 
   it('should render a icon on right when right option is passed', () => {
-    renderWithTheme(
+    render(
       <TextField icon={<Email data-testid="icon" />} iconPosition="right" />
     )
 
@@ -81,7 +80,7 @@ describe('<TextField />', () => {
 
   it('should not change its value when disabled', async () => {
     const onInput = jest.fn()
-    renderWithTheme(
+    render(
       <TextField
         onInput={onInput}
         label="textField"
@@ -103,7 +102,7 @@ describe('<TextField />', () => {
   })
 
   it('should not be accessible by key Tab when is disabled', async () => {
-    renderWithTheme(<TextField label="textField" name="textField" disabled />)
+    render(<TextField label="textField" name="textField" disabled />)
 
     const input = screen.getByLabelText('textField')
     expect(document.body).toHaveFocus()
@@ -114,7 +113,7 @@ describe('<TextField />', () => {
   })
 
   it('should render with error', () => {
-    const { container } = renderWithTheme(
+    const { container } = render(
       <TextField
         icon={<Email data-testid="icon" />}
         label="textField"
