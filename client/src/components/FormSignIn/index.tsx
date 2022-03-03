@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
-import { signIn } from 'next-auth/react'
+import { signIn } from 'next-auth/client'
 import { Email, Lock } from 'styled-icons/material-outlined'
 
 import Button from 'components/Button'
@@ -41,7 +41,7 @@ const FormSignIn = () => {
           name="email"
           placeholder="E-mail"
           type="email"
-          onInputChange={(value) => handleInput('identifier', value)}
+          onInputChange={(value) => handleInput('email', value)}
           icon={<Email />}
         />
         <TextField

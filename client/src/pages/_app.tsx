@@ -1,5 +1,5 @@
 import { ApolloProvider } from '@apollo/client'
-import { SessionProvider } from 'next-auth/react'
+import { Provider as AuthProvider } from 'next-auth/client'
 import { ThemeProvider } from 'styled-components'
 import { CartProvider } from 'hooks/use-cart'
 import { useApollo } from 'utils/apollo'
@@ -14,7 +14,7 @@ function App({ Component, pageProps }: AppProps) {
   const client = useApollo(pageProps.initialApolloState)
 
   return (
-    <SessionProvider session={pageProps.session}>
+    <AuthProvider session={pageProps.session}>
       <ApolloProvider client={client}>
         <ThemeProvider theme={theme}>
           <CartProvider>
@@ -39,7 +39,7 @@ function App({ Component, pageProps }: AppProps) {
           </CartProvider>
         </ThemeProvider>
       </ApolloProvider>
-    </SessionProvider>
+    </AuthProvider>
   )
 }
 
