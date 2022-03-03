@@ -51,7 +51,7 @@ const FormSignUp = () => {
           name="email"
           type="email"
           placeholder="E-mail"
-          onInputChange={(value) => handleInput('email', value)}
+          onInputChange={(value) => handleInput('identifier', value)}
           icon={<Email />}
         />
         <TextField
