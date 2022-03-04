@@ -21,6 +21,7 @@ export const Username = styled.span`
 export const Link = styled.a`
   ${({ theme }) => css`
     display: flex;
+    cursor: pointer;
     align-items: center;
     text-decoration: none;
     background: ${theme.colors.white};
