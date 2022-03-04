@@ -15,7 +15,7 @@ import * as S from './styles'
 import UserDropdown from 'components/UserDropdown'
 
 export type MenuProps = {
-  username?: string
+  username?: string | null
 }
 
 const Menu = ({ username }: MenuProps) => {
