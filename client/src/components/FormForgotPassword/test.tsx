@@ -1,5 +1,5 @@
-import userEvent from '@testing-library/user-event'
 import 'server.mock'
+import userEvent from '@testing-library/user-event'
 import { render, screen } from 'utils/test-utils'
 
 import FormForgotPassword from '.'
