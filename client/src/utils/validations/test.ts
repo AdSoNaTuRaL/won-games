@@ -1,4 +1,9 @@
-import { signInValidation, signUpValidation } from '.'
+import {
+  signInValidation,
+  signUpValidation,
+  forgotPasswordValidation,
+  resetPasswordValidation
+} from '.'
 
 describe('validations', () => {
   describe('signInValidation()', () => {
@@ -69,6 +74,57 @@ describe('validations', () => {
       }
 
       expect(signUpValidation(values)).toMatchInlineSnapshot(`
+        Object {
+          "confirm_password": "confirm password does not match",
+        }
+      `)
+    })
+  })
+
+  describe('forgotPasswordValidation()', () => {
+    it('should validate empty fields', () => {
+      const values = { email: '' }
+
+      expect(forgotPasswordValidation(values)).toMatchObject({
+        email: '"email" is not allowed to be empty'
+      })
+    })
+
+    it('should return invalid email error', () => {
+      const values = { email: 'invalidemail' }
+
+      expect(forgotPasswordValidation(values).email).toMatchInlineSnapshot(
+        `"\\"email\\" must be a valid email"`
+      )
+    })
+  })
+
+  describe('resetPasswordValidation()', () => {
+    it('should validate empty fields', () => {
+      const values = { password: '', confirm_password: '' }
+
+      expect(resetPasswordValidation(values)).toMatchObject({
+        password: expect.any(String)
+      })
+    })
+
+    it('should validate confirm_password', () => {
+      const values = { password: '123', confirm_password: '' }
+
+      expect(
+        resetPasswordValidation(values).confirm_password
+      ).toMatchInlineSnapshot(
+        `"\\"confirm_password\\" is not allowed to be empty"`
+      )
+    })
+
+    it('should return unMatch passwords error', () => {
+      const values = {
+        password: '12345678',
+        confirm_password: '987654321'
+      }
+
+      expect(resetPasswordValidation(values)).toMatchInlineSnapshot(`
         Object {
           "confirm_password": "confirm password does not match",
         }
