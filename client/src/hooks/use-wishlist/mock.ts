@@ -7,26 +7,22 @@ const gameMock = (id: string) => ({
   price: 10.5,
   developers: [{ name: 'sample developer' }],
   cover: {
-    src: '/sample-game.jpg'
+    url: '/sample-game.jpg'
   },
   __typename: 'Game'
 })
 
-export const wishListMock = {
+export const wishlistMock = {
   request: {
     query: QUERY_WISHLIST,
-    context: {
-      session: {
-        jwt: '123'
-      }
-    },
+    context: { session: { jwt: '123' } },
     variables: {
-      identifier: 'adsonhenriquesilva@gmail.com'
+      identifier: 'lorem@ipsum.com'
     }
   },
   result: {
     data: {
-      wishLists: [
+      wishlists: [
         {
           id: 1,
           games: [gameMock('1'), gameMock('2')]
