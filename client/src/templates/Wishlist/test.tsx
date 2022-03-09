@@ -1,3 +1,4 @@
+import 'session.mock'
 import { screen, render } from 'utils/test-utils'
 
 import gamesMock from 'components/GameCardSlider/mock'
