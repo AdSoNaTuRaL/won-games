@@ -1,3 +1,4 @@
+import 'session.mock'
 import userEvent from '@testing-library/user-event'
 import { screen, render } from 'utils/test-utils'
 
