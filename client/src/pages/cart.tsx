@@ -19,7 +19,7 @@ export default function CartPage(props: CartProps) {
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const session = await protectedRoutes(context)
 
-  const apolloClient = initializeApollo()
+  const apolloClient = initializeApollo(null, session)
 
   const { data } = await apolloClient.query<queryRecommended>({
     query: QUERY_RECOMMENDED
