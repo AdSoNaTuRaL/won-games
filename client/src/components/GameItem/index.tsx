@@ -49,7 +49,7 @@ const GameItem = ({
             )}
           </S.Title>
           <S.Group>
-            <S.Price>{price}</S.Price>
+            <S.Price>{price === '$0.00' ? 'FREE' : price}</S.Price>
             {isInCart(id) && (
               <S.Remove onClick={() => removeFromCart(id)}>Remover</S.Remove>
             )}
