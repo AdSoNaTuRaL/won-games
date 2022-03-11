@@ -1,7 +1,6 @@
 'use strict';
 
 const { sanitizeEntity } = require("strapi-utils")
-const orderTemplate = require('../../../config/email-templates/order')
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 
 module.exports = {
