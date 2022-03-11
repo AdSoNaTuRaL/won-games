@@ -11,6 +11,11 @@ const props = {
   recommendedHighlight: highlightMock
 }
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const useSession = jest.spyOn(require('next-auth/client'), 'useSession')
+const session = { jwt: '123', user: { email: 'lore@impsuon.com' } }
+useSession.mockImplementation(() => [session])
+
 jest.mock('templates/Base', () => {
   return {
     __esModule: true,
@@ -58,7 +63,7 @@ jest.mock('components/Empty', () => {
 
 describe('<Cart />', () => {
   it('should render sections', () => {
-    render(<Cart {...props} />)
+    render(<Cart session={session} {...props} />)
 
     expect(
       screen.getByRole('heading', { name: /my cart/i })
