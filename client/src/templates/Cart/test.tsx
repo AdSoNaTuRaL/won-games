@@ -1,19 +1,20 @@
-import 'match-media-mock'
-import { screen, render } from 'utils/test-utils'
-
-import cardsMock from 'components/PaymentOptions/mock'
 import gamesMock from 'components/GameCardSlider/mock'
 import highlightMock from 'components/Highlight/mock'
-
-import Cart from './index'
+import 'match-media-mock'
 import React from 'react'
+import { render, screen } from 'utils/test-utils'
+import Cart from './index'
 
 const props = {
   recommendedTitle: 'You may like these games',
-  cards: cardsMock,
   recommendedGames: gamesMock,
   recommendedHighlight: highlightMock
 }
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const useSession = jest.spyOn(require('next-auth/client'), 'useSession')
+const session = { jwt: '123', user: { email: 'lore@impsuon.com' } }
+useSession.mockImplementation(() => [session])
 
 jest.mock('templates/Base', () => {
   return {
@@ -42,11 +43,11 @@ jest.mock('components/CartList', () => {
   }
 })
 
-jest.mock('components/PaymentOptions', () => {
+jest.mock('components/PaymentForm', () => {
   return {
     __esModule: true,
     default: function Mock() {
-      return <div data-testid="Mock PaymentOptions"></div>
+      return <div data-testid="Mock PaymentForm"></div>
     }
   }
 })
@@ -62,13 +63,13 @@ jest.mock('components/Empty', () => {
 
 describe('<Cart />', () => {
   it('should render sections', () => {
-    render(<Cart {...props} />)
+    render(<Cart session={session} {...props} />)
 
     expect(
       screen.getByRole('heading', { name: /my cart/i })
     ).toBeInTheDocument()
     expect(screen.getByTestId('Mock Cart')).toBeInTheDocument()
-    expect(screen.getByTestId('Mock PaymentOptions')).toBeInTheDocument()
+    expect(screen.getByTestId('Mock PaymentForm')).toBeInTheDocument()
     expect(screen.getByTestId('Mock Showcase')).toBeInTheDocument()
     expect(screen.queryByTestId('Mock Empty')).not.toBeInTheDocument()
   })

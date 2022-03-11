@@ -1,7 +1,6 @@
 import userEvent from '@testing-library/user-event'
 import { CartContextDefaultValues } from 'hooks/use-cart'
-import { screen, render } from 'utils/test-utils'
-
+import { render, screen } from 'utils/test-utils'
 import GameItem from './index'
 
 const props = {
@@ -70,5 +69,18 @@ describe('<GameItem />', () => {
 
     expect(screen.getByText(paymentInfo.number)).toBeInTheDocument()
     expect(screen.getByText(paymentInfo.purchaseDate)).toBeInTheDocument()
+  })
+
+  it('should render free game when there is not payment info', () => {
+    const paymentInfo = {
+      flag: null,
+      img: null,
+      number: 'Free Game',
+      purchaseDate: 'Purchase made on 07/20/2020 at 20:32'
+    }
+
+    render(<GameItem {...props} paymentInfo={paymentInfo} />)
+
+    expect(screen.getByText(/Free Game/i)).toBeInTheDocument()
   })
 })

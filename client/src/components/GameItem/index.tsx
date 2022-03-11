@@ -4,8 +4,8 @@ import * as S from './styles'
 
 export type PaymentInfoProps = {
   number: string
-  flag: string
-  img: string
+  flag: string | null
+  img: string | null
   purchaseDate: string
 }
 
@@ -49,7 +49,7 @@ const GameItem = ({
             )}
           </S.Title>
           <S.Group>
-            <S.Price>{price}</S.Price>
+            <S.Price>{price === '$0.00' ? 'FREE' : price}</S.Price>
             {isInCart(id) && (
               <S.Remove onClick={() => removeFromCart(id)}>Remover</S.Remove>
             )}
@@ -62,7 +62,12 @@ const GameItem = ({
           <p>{paymentInfo.purchaseDate}</p>
           <S.CardInfo>
             <span>{paymentInfo.number}</span>
-            <img src={paymentInfo.img} alt={paymentInfo.flag} />
+            {!!paymentInfo.img && (
+              <img
+                src={paymentInfo.img}
+                alt={paymentInfo.flag || 'Free Game'}
+              />
+            )}
           </S.CardInfo>
         </S.PaymentContent>
       )}
