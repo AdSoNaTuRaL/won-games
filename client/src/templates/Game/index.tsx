@@ -10,6 +10,7 @@ import TextContent from 'components/TextContent'
 import Base from 'templates/Base'
 
 import * as S from './styles'
+import Image from 'next/image'
 
 export type GameTemplateProps = {
   slug: string
@@ -55,7 +56,9 @@ const Game = ({
         ]
       }}
     />
-    <S.Cover src={cover} role="image" aria-label="cover" />
+    <S.Cover>
+      <Image src={cover} alt={gameInfo.title} layout="fill" objectFit="cover" />
+    </S.Cover>
 
     <S.Main>
       <S.SectionGameInfo>

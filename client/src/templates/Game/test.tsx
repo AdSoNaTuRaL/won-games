@@ -10,6 +10,7 @@ import { GameDetailsProps } from 'components/GameDetails'
 import Game, { GameTemplateProps } from './index'
 
 const props: GameTemplateProps = {
+  slug: 'bg-image',
   cover: 'bg-image.jpg',
   gameInfo: gameInfoMock,
   gallery: galleryMock,
@@ -99,12 +100,9 @@ describe('<Game />', () => {
   it('should render the cover image', () => {
     render(<Game {...props} />)
 
-    const coverImage = screen.getByRole('image', { name: /cover/i })
-
-    expect(coverImage).toHaveStyle({
-      backgroundImage: 'url(bg-image.jpg)',
-      height: '39.5rem'
-    })
+    const coverImage = screen.getByRole('img', {
+      name: /GTA San Andreas/i
+    }).parentElement
 
     expect(coverImage).toHaveStyleRule('height', '70rem', {
       media: '(min-width: 768px)'

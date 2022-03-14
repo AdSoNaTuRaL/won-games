@@ -8,6 +8,7 @@ import Slider, { SliderSettings } from 'components/Slider'
 
 import * as S from './styles'
 import { Close } from 'styled-icons/material-outlined'
+import Image from 'next/image'
 
 const commomSettings: SliderSettings = {
   arrows: true,
@@ -80,7 +81,9 @@ const Gallery = ({ items }: GalleryProps) => {
     <S.Wrapper>
       <Slider ref={sliderRef} settings={settings}>
         {items.map((item, index) => (
-          <img
+          <Image
+            width={295}
+            height={165}
             role="button"
             key={index}
             src={item.src}
@@ -105,7 +108,13 @@ const Gallery = ({ items }: GalleryProps) => {
         <S.Content>
           <Slider ref={sliderRef} settings={modalSettings}>
             {items.map((item, index) => (
-              <img key={index} src={item.src} alt={item.alt} />
+              <Image
+                width={1200}
+                height={675}
+                key={index}
+                src={item.src}
+                alt={item.alt}
+              />
             ))}
           </Slider>
         </S.Content>
