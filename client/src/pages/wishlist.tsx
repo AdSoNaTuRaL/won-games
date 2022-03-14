@@ -1,18 +1,15 @@
-import { GetServerSidePropsContext } from 'next'
-
-import Wishlist, { WishlistTemplateProps } from 'templates/Wishlist'
-
 import { queryRecommended } from 'graphql/generated/queryRecommended'
-import { QUERY_RECOMMENDED } from 'graphql/queries/recommended'
 import {
   QueryWishlist,
   QueryWishlistVariables
 } from 'graphql/generated/QueryWishlist'
+import { QUERY_RECOMMENDED } from 'graphql/queries/recommended'
 import { QUERY_WISHLIST } from 'graphql/queries/wishlist'
-
+import { GetServerSidePropsContext } from 'next'
+import Wishlist, { WishlistTemplateProps } from 'templates/Wishlist'
+import { initializeApollo } from 'utils/apollo'
 import { gamesMapper, highlightMapper } from 'utils/mappers'
 import protectedRoutes from 'utils/protected-routes'
-import { initializeApollo } from 'utils/apollo'
 
 export default function WishlistPage(props: WishlistTemplateProps) {
   return <Wishlist {...props} />
@@ -22,7 +19,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const session = await protectedRoutes(context)
   const apolloClient = initializeApollo(null, session)
 
-  if (!session) return {}
+  if (!session) {
+    return { props: {} }
+  }
 
   await apolloClient.query<QueryWishlist, QueryWishlistVariables>({
     query: QUERY_WISHLIST,
