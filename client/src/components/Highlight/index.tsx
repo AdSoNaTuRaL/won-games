@@ -25,7 +25,12 @@ const Highlight = ({
     <Image src={backgroundImage} alt={title} layout="fill" objectFit="cover" />
     {!!floatImage && (
       <S.FloatImageWrapper>
-        <Image src={floatImage} alt={title} width={400} height={300} />
+        <Image
+          src={floatImage}
+          alt={`${title} - floatImage`}
+          width={400}
+          height={300}
+        />
       </S.FloatImageWrapper>
     )}
     <S.Content>
