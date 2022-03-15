@@ -35,7 +35,7 @@ describe('<GameItem />', () => {
 
     render(<GameItem {...props} />, { cartProviderProps })
 
-    const removeLink = screen.getByText(/remover/i)
+    const removeLink = screen.getByText(/remove/i)
     expect(removeLink).toBeInTheDocument()
 
     userEvent.click(removeLink)

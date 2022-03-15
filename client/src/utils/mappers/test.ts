@@ -232,7 +232,7 @@ describe('ordersMapper()', () => {
             downloadLink:
               'https://wongames.com/game/download/yuYT56Tgh431LkjhNBgdf',
             img: 'http://localhost:1337/image.jpg',
-            price: '$0.00'
+            price: 'FREE'
           }
         ]
       }
