@@ -25,4 +25,15 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import '@testing-library/cypress/add-commands';
 
-Cypress.Commands.add('google', () => cy.visit('https://www.google.com.br'))
+Cypress.Commands.add('shouldRenderBanner', () => {
+  cy.get('.slick-slider').within(() => {
+    cy.findByRole('heading', { name: /cyberpunk-2077/i })
+    cy.findByRole('link', { name: /buy now/i })
+
+    cy.get('.slick-dots :nth-child(2) > button').click()
+    cy.wait(500)
+
+    cy.findByRole('heading', { name: /horizon forbidden west/i })
+    cy.findByRole('link', { name: /buy now/i })
+  })
+})
