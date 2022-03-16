@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { useCart } from 'hooks/use-cart'
 import { Download } from 'styled-icons/boxicons-solid'
 import * as S from './styles'
@@ -29,10 +30,10 @@ const GameItem = ({
   const { isInCart, removeFromCart } = useCart()
 
   return (
-    <S.Wrapper>
+    <S.Wrapper data-cy="game-item">
       <S.GameContent>
         <S.ImageBox>
-          <img src={img} alt={title} />
+          <Image src={img} alt={title} width={150} height={70} />
         </S.ImageBox>
 
         <S.Content>
@@ -49,9 +50,9 @@ const GameItem = ({
             )}
           </S.Title>
           <S.Group>
-            <S.Price>{price === '$0.00' ? 'FREE' : price}</S.Price>
+            <S.Price>{price}</S.Price>
             {isInCart(id) && (
-              <S.Remove onClick={() => removeFromCart(id)}>Remover</S.Remove>
+              <S.Remove onClick={() => removeFromCart(id)}>Remove</S.Remove>
             )}
           </S.Group>
         </S.Content>

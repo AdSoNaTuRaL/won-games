@@ -44,7 +44,10 @@ export const highlightMapper = (
         title: highlight.title,
         subtitle: highlight.subtitle,
         backgroundImage: `${getImageUrl(highlight.backgroundImage?.url)}`,
-        floatImage: `${getImageUrl(highlight.floatImage?.url)}`,
+        floatImage:
+          highlight.floatImage?.url === undefined
+            ? ''
+            : `${getImageUrl(highlight.floatImage?.url)}`,
         buttonLabel: highlight.buttonLabel,
         buttonLink: highlight.buttonLink,
         alignment: highlight.alignment

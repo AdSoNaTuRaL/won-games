@@ -39,3 +39,7 @@ workbox-*.js
 
 # ts stuff
 tsconfig.tsbuildinfo
+
+# cypress
+cypress/screenshots
+cypress/videos
