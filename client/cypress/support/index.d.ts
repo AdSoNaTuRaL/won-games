@@ -30,5 +30,17 @@ declare namespace Cypress {
      * @example cy.getFields('fields')
      */
     getFields(fields: Array<{label: string, name: string | number}>): Chainable<Element>
+
+    /**
+     * Custom command to check if value is greater than given value
+     * @example cy.shouldBeGreaterThan(50)
+     */
+    shouldBeGreaterThan(value: number): Chainable<Element>
+
+    /**
+     * Custom command to check if value is less than given value
+     * @example cy.shouldBeLessThan(10)
+     */
+    shouldBeLessThan(value: number): Chainable<Element>
   }
 }
