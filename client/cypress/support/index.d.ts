@@ -24,5 +24,11 @@ declare namespace Cypress {
      * @example cy.shouldRenderShowcase()
      */
     shouldRenderShowcase(attrs: ShowcaseAttributes): Chainable<Element>
+
+    /**
+     * Custom command to check fields in page
+     * @example cy.getFields('fields')
+     */
+    getFields(fields: Array<{label: string, name: string | number}>): Chainable<Element>
   }
 }
