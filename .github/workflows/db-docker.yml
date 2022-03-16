@@ -2,10 +2,12 @@ name: DB Docker
 
 on:
   push:
-    paths:
-      - 'database/**'
     branches:
       - 'main'
+
+defaults:
+  run:
+    working-directory: database
 
 jobs:
   docker:
