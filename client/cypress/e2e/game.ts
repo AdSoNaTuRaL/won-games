@@ -1,12 +1,13 @@
 /// <reference path="../support/index.d.ts" />
 
 describe('Game Page', () => {
-  it('should render game page sections', () => {
+  before(() => {
     cy.visit('/game/control-ultimate-edition')
-
     cy.wait(5000)
+  })
 
-    cy.getByDataCy('game-info').within(() => {
+  it('should render game page sections', () => {
+    cy.getByDataCy('game-info').should('exist').within(() => {
       cy.findByRole('heading', { name: /control ultimate edition/i }).should('exist')
       cy.findByText(/Control Ultimate Edition contains the main game/i).should('exist')
       cy.findByText(/free/i).should('exist')
@@ -43,5 +44,36 @@ describe('Game Page', () => {
 
     cy.shouldRenderShowcase({ name: "Upcoming games", highlight: true })
     cy.shouldRenderShowcase({ name: "You may like these games", highlight: false })
+  })
+
+  it('should add/remove game in cart', () => {
+    // Add
+    cy.getByDataCy('game-info').within(() => {
+      cy.findByRole('button', { name: /add to cart/i }).click()
+
+      cy.findByRole('button', { name: /remove from cart/i }).should('exist')
+    })
+
+    cy.findAllByLabelText(/cart items/i)
+      .first()
+      .should('have.text', 1)
+      .click()
+
+    cy.getByDataCy('cart-list').within(() => {
+      cy.findByRole('heading', { name: /control ultimate edition/i }).should('exist')
+    })
+
+    // Remove
+    cy.findAllByLabelText(/cart items/i)
+      .first()
+      .click()
+
+    cy.getByDataCy('game-info').within(() => {
+      cy.findByRole('button', { name: /remove from cart/i }).click()
+
+      cy.findByRole('button', { name: /add to cart/i }).should('exist')
+    })
+
+    cy.findAllByLabelText(/cart items/i).should('not.exist')
   })
 })
