@@ -26,7 +26,7 @@ describe('User', () => {
     cy.findByText('cypress').should('not.exist')
   })
 
-  it.only('should sign in the user and redirect to the page that it was defined previously', () => {
+  it('should sign in the user and redirect to the page that it was defined previously', () => {
     cy.visit('/profile/me')
     cy.url().should('eq', `${Cypress.config().baseUrl}/sign-in?callbackUrl=/profile/me`)
 
