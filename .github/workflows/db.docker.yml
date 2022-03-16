@@ -1,11 +1,8 @@
 name: DB Docker
-
 on:
   push:
-    paths:
-      - 'database/**'
     branches:
-      - 'main'
+      - main
 
 defaults:
   run:

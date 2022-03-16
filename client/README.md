@@ -20,7 +20,7 @@ This project uses lot of technologies such as:
 
 ## Getting Started
 
-First, run the development server:
+First, run the development server :
 
 ```bash
 npm run dev
