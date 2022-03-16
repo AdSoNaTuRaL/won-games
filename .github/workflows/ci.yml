@@ -3,17 +3,15 @@ on:
   push:
     branches:
       - main
-    paths-ignore:
-      - '**/**.md'
-      - '**.md'
-
-defaults:
-  run:
-    working-directory: client
+    paths:
+      - client/**
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./client
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
