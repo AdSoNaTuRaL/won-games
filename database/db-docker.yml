@@ -2,6 +2,8 @@ name: DB Docker
 
 on:
   push:
+    paths:
+      - 'database/**'
     branches:
       - 'main'
 
