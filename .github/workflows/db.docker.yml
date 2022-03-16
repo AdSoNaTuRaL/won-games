@@ -1,4 +1,4 @@
-name: DB Docker
+name: DB Docker (Dump)
 on:
   push:
     branches:
