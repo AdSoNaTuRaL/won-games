@@ -8,7 +8,7 @@ describe('<CartIcon />', () => {
     render(<CartIcon />)
 
     expect(screen.getByLabelText(/shopping cart/i)).toBeInTheDocument()
-    expect(screen.queryByLabelText(/card items/i)).not.toBeInTheDocument()
+    expect(screen.queryByLabelText(/cart items/i)).not.toBeInTheDocument()
   })
 
   it('should render with badge', () => {
@@ -17,7 +17,7 @@ describe('<CartIcon />', () => {
     })
 
     expect(screen.getByLabelText(/shopping cart/i)).toBeInTheDocument()
-    expect(screen.getByLabelText(/card items/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/cart items/i)).toBeInTheDocument()
     expect(screen.getByText('3')).toBeInTheDocument()
   })
 })
