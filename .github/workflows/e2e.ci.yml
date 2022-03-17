@@ -37,6 +37,3 @@ jobs:
 
       - name: Run cypress
         run: yarn test:e2e:ci
-
-      - name: Build
-        run: yarn build
