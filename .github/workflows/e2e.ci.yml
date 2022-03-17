@@ -29,8 +29,6 @@ jobs:
         with:
           node-version: 14.x
 
-      - uses: c-hive/gha-yarn-cache@v1
-
       - name: Install dependencies
         run: yarn install
 
