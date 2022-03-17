@@ -9,5 +9,5 @@
   ![CI](https://github.com/AdSoNaTuRaL/won-games/actions/workflows/api.ci.yml/badge.svg)
   ![CI](https://github.com/AdSoNaTuRaL/won-games/actions/workflows/client.ci.yml/badge.svg)
   ![CI](https://github.com/AdSoNaTuRaL/won-games/actions/workflows/db.ci.yml/badge.svg)
-  ![CI](https://github.com/AdSoNaTuRaL/won-games/actions/workflows/e2e.ci.docker.yml/badge.svg)
+  ![CI](https://github.com/AdSoNaTuRaL/won-games/actions/workflows/e2e.ci.yml/badge.svg)
 </div>
