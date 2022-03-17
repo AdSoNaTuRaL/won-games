@@ -1,6 +1,6 @@
 # Won Games - API
 
-This API was built for training the use of advanced techniques in React using Strapi
+This API was built for training the use of advanced techniques in React using Strapi.
 
 ## Requirements
 
