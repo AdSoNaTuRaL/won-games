@@ -2,8 +2,8 @@ FROM strapi/base:14
 
 WORKDIR /opt/app
 
-COPY ./api/package.json ./
-COPY ./api/yarn.lock ./
+COPY ./package.json ./
+COPY ./yarn.lock ./
 
 RUN yarn install --prod
 
