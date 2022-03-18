@@ -1,11 +1,12 @@
 <div align="center">
-  <img width="150" src="https://user-images.githubusercontent.com/26275918/152402077-22e5cc23-f615-423b-9297-6d401bb3d585.png">
-  <h1>Won Games</h1>
+  <img width="150" src="https://user-images.githubusercontent.com/26275918/159025904-e82590fe-1adc-4931-bcf1-b63851bf8aa8.png">
 
   ![CI](https://github.com/AdSoNaTuRaL/won-games/actions/workflows/api.ci.yml/badge.svg)
   ![CI](https://github.com/AdSoNaTuRaL/won-games/actions/workflows/client.ci.yml/badge.svg)
   ![CI](https://github.com/AdSoNaTuRaL/won-games/actions/workflows/db.ci.yml/badge.svg)
   ![CI](https://github.com/AdSoNaTuRaL/won-games/actions/workflows/e2e.ci.yml/badge.svg)
+  
+  <h1>Won Games</h1>
 </div>
 
 
