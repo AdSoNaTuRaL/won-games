@@ -1,8 +1,6 @@
-<div align="center">
+# Won Games - Client
 
-  ![Won Games](https://user-images.githubusercontent.com/26275918/152402077-22e5cc23-f615-423b-9297-6d401bb3d585.png)
-
-</div>
+<img src="https://user-images.githubusercontent.com/26275918/159019012-0df4f3e7-511d-44da-8c35-1afb33268e4e.png">
 
 ## What is inside?
 
@@ -17,22 +15,26 @@ This project uses lot of technologies such as:
 - [Eslint](https://eslint.org/)
 - [Prettier](https://prettier.io/)
 - [Husky](https://github.com/typicode/husky)
+- [Apollo](https://www.apollographql.com/docs/)
+- [Stripe](https://stripe.com/)
+- [Cypress](https://www.cypress.io/)
 
 ## Getting Started
+> You will need the API to be running on port 1337.
 
-First, run the development server :
+First, install the dependencies. Then run the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
+$ yarn install
+
+# then
+
+$ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-## Commands
+## Utils Commands
 
 - `dev`: runs your application on `localhost:3000`
 - `build`: creates the production build version
@@ -42,18 +44,3 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 - `test:watch`: runs jest in watch mode
 - `storybook`: runs storybook on `localhost:6006`
 - `build-storybook`: create the build version of storybook
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details
